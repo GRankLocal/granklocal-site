@@ -1076,10 +1076,22 @@
 <script>
 (function(){
   var header=document.querySelector('header');
+  // Histerese: entra em 'scrolled' aos 80px, mas so sai aos 40px.
+  // O header encolhe 12px ao ativar, o que reduz a altura do documento e faz o
+  // scroll cruzar o limiar de volta. Com limiar unico isso vira loop infinito
+  // (medido: 51 trocas de estado por segundo, o header vibrando). A folga de
+  // 40px e muito maior que os 12px de encolhimento, entao a oscilacao acaba.
+  var ENTRA=80, SAI=40, ativo=false, agendado=false;
+  function avalia(){
+    agendado=false;
+    var y=window.scrollY;
+    if(!ativo && y>ENTRA){ ativo=true; header.classList.add('scrolled'); }
+    else if(ativo && y<SAI){ ativo=false; header.classList.remove('scrolled'); }
+  }
   window.addEventListener('scroll',function(){
-    if(window.scrollY>80){header.classList.add('scrolled')}
-    else{header.classList.remove('scrolled')}
+    if(!agendado){ agendado=true; window.requestAnimationFrame(avalia); }
   },{passive:true});
+  avalia();
 
 
 
