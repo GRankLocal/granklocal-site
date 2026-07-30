@@ -145,7 +145,7 @@
      "name": "Quanto custa?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Depende do ponto de partida, e é por isso que a gente conversa antes. Um perfil que já está verificado, com avaliações em dia, precisa de bem menos trabalho do que um que nunca foi reivindicado. Depois de olhar seu caso você recebe um valor fechado, sem surpresa depois."
+      "text": "Os valores estão na seção de planos, sem reunião para descobrir: R$ 250 uma vez para arrumar o perfil, R$ 150 por mês de acompanhamento, e R$ 300 se você também precisar de site. Caso raro que foge disso é perfil suspenso ou duplicado, que dá trabalho extra e eu falo antes de começar, nunca depois."
      }
     },
     {
@@ -326,78 +326,43 @@
   .feature-card p{font-size:13.5px;color:var(--ink-soft)}
 
   /* pricing */
-  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media (max-width:860px){.price-grid{grid-template-columns:1fr}}
-  .price-card{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;transition:transform .25s ease-out,box-shadow .25s ease-out}
-  .price-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px -16px rgba(16,22,35,0.2)}
-  .price-card.featured{border:2px solid var(--emerald);position:relative}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+  @media (max-width:860px){.price-grid{grid-template-columns:1fr;gap:18px}}
+  .price-card{background:var(--paper-2);border:1px solid var(--line);border-radius:20px;
+    padding:32px 28px;display:flex;flex-direction:column;height:100%;
+    transition:transform .25s ease-out,box-shadow .25s ease-out}
+  .price-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px -16px rgba(16,22,35,.2)}
+  .price-card.featured{border:2px solid var(--emerald);position:relative;
+    background:linear-gradient(180deg,var(--emerald-soft) 0%,var(--paper-2) 22%);
+    box-shadow:0 20px 44px -22px rgba(13,110,86,.4)}
   .featured-badge{
-    position:absolute;top:-13px;left:24px;background:var(--emerald);color:#fff;
-    font-size:11px;font-weight:600;padding:4px 12px;border-radius:999px;
-  }
-  .price-card h3{margin-bottom:4px}
-  .price-tag{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-soft);margin-bottom:18px}
-  .price-list{list-style:none;flex:1;margin-bottom:20px}
-  .price-list li{font-size:14px;color:var(--ink-soft);padding:7px 0;border-top:1px solid var(--line);display:flex;gap:8px}
-  .price-list li:first-child{border-top:none}
-  .check{color:var(--emerald);flex-shrink:0}
+    position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    background:var(--emerald);color:#fff;font-size:11.5px;font-weight:700;
+    letter-spacing:.04em;padding:5px 15px;border-radius:99px;white-space:nowrap}
 
-.proofbar{background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);border-bottom:1px solid var(--line);padding:34px 0}
-  .proofbar .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  @media (max-width:860px){.proofbar .wrap{grid-template-columns:1fr 1fr}}
-  @media (max-width:520px){
-    .proofbar{padding:24px 0}
-    .proofbar .wrap{gap:10px}
-    .proof-item{padding:14px 13px}
-    .proof-ico{width:28px;height:28px;margin-bottom:9px}
-    .proof-item strong{font-size:13px}
-    .proof-item span{font-size:12px}
-  }
-  .proof-item{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:18px 16px;
-    transition:transform .22s ease-out,box-shadow .22s ease-out,border-color .22s ease-out}
-  .proof-item:hover{transform:translateY(-2px);border-color:#BFDCD0;box-shadow:0 10px 22px -14px rgba(14,122,95,.35)}
-  .proof-ico{width:34px;height:34px;border-radius:9px;background:var(--emerald-soft,#E1F2EC);
-    display:flex;align-items:center;justify-content:center;margin-bottom:12px}
-  .proof-item strong{display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:5px;letter-spacing:-0.01em}
-  .proof-item span{font-size:13px;color:var(--ink-soft);line-height:1.5;display:block}
+  .price-card h3{margin:0 0 6px;font-size:19px;color:var(--ink)}
+  .price-for{font-size:13.5px;color:var(--ink-soft);line-height:1.5;
+    min-height:40px;margin-bottom:18px}
+  .price-tag{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;
+    padding-bottom:20px;margin-bottom:4px;border-bottom:1px solid var(--line)}
+  .price-tag .cur{font-size:19px;font-weight:700;color:var(--ink);align-self:flex-start;margin-top:8px}
+  .price-tag .val{font-size:46px;font-weight:700;color:var(--ink);line-height:1;letter-spacing:-.03em}
+  .price-tag .per{font-size:14px;color:var(--ink-soft);font-weight:500}
+  .price-tag .plus{font-size:15px;color:var(--ink-soft);font-weight:600;width:100%;margin-top:8px}
 
-  /* CTA fixo mobile: aparece a partir de 60% de rolagem (thumb zone) */
-  .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(15,31,26,.97);
-    backdrop-filter:blur(10px);border-top:1px solid #24443A;padding:11px 16px calc(11px + env(safe-area-inset-bottom));
-    display:none;align-items:center;gap:12px;transform:translateY(110%);transition:transform .28s ease-out}
-  .sticky-cta.show{transform:translateY(0)}
-  .sticky-cta .sc-txt{flex:1;min-width:0}
-  .sticky-cta .sc-txt b{display:block;color:#fff;font-size:13.5px;font-weight:600;line-height:1.25}
-  .sticky-cta .sc-txt span{display:block;color:#8FA79D;font-size:11.5px;margin-top:2px}
-  .sticky-cta .btn{padding:12px 18px;font-size:13.5px;white-space:nowrap}
-  @media (max-width:860px){.sticky-cta{display:flex}}
-  @media (prefers-reduced-motion:reduce){.sticky-cta{transition:none}}
+  .price-list{list-style:none;flex:1;margin:18px 0 22px;padding:0}
+  .price-list li{font-size:14.5px;color:var(--ink-soft);line-height:1.5;
+    padding:9px 0;display:flex;gap:9px;align-items:flex-start}
+  .price-list li .check{color:var(--emerald);font-weight:700;flex-shrink:0;font-size:13px;margin-top:2px}
+  .price-cta{display:flex;align-items:center;justify-content:center;width:100%;
+    min-height:48px;border-radius:999px;font-weight:700;font-size:15px;
+    text-decoration:none;padding:13px 18px;text-align:center}
+  .price-cta.solid{background:var(--cta);color:var(--cta-ink)}
+  .price-cta.solid:hover{background:var(--cta-deep)}
+  .price-cta.ghost{background:transparent;color:var(--emerald-deep);border:1.5px solid var(--line)}
+  .price-cta.ghost:hover{border-color:var(--emerald);color:var(--emerald)}
+  .price-foot{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:10px}
 
-  /* faixa de CTA intermediaria (mata a zona morta) */
-  .midcta{background:var(--emerald-soft,#E1F2EC);border-top:1px solid #C4E3D6;border-bottom:1px solid #C4E3D6;padding:0}
-  .midcta .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 24px}
-  @media (max-width:700px){.midcta .wrap{flex-direction:column;align-items:flex-start;gap:16px;text-align:left}}
-  .midcta p{font-size:17px;font-weight:600;color:var(--ink);margin:0;line-height:1.35}
-  .midcta small{display:block;font-weight:400;font-size:13.5px;color:var(--ink-soft);margin-top:4px}
-
-  /* geogrid */
-  .grid-viz{background:#0B1F18;border:1px solid rgba(29,184,138,.3);border-radius:14px;padding:18px}
-  .grid-viz-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
-  .grid-viz-head b{font-size:13px;color:#fff;font-weight:600}
-  .grid-viz-head span{font-family:'JetBrains Mono',monospace;font-size:11px;color:#7C9A8C;letter-spacing:.06em;text-transform:uppercase}
-  .gg{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
-  .gg i{aspect-ratio:1;border-radius:7px;display:flex;align-items:center;justify-content:center;
-    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;font-style:normal}
-  .gg .g1{background:rgba(29,184,138,.9);color:#06231A}
-  .gg .g2{background:rgba(29,184,138,.42);color:#CFF3E5}
-  .gg .g3{background:rgba(214,158,46,.34);color:#F3D9A6}
-  .gg .g4{background:rgba(176,69,58,.34);color:#F0BDB6}
-  .gg .g5{background:rgba(176,69,58,.6);color:#FFE1DC}
-  .gg-legend{display:flex;gap:14px;margin-top:13px;flex-wrap:wrap}
-  .gg-legend span{display:flex;align-items:center;gap:6px;font-size:11px;color:#8FA79D}
-  .gg-legend em{width:10px;height:10px;border-radius:3px;font-style:normal}
-
-  /* reforco de confianca perto do preco */
   .price-trust{margin-top:26px;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;
     padding:18px 22px;display:flex;gap:22px;flex-wrap:wrap;align-items:center;justify-content:center}
   .price-trust span{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-soft)}
@@ -407,6 +372,10 @@
   .plan-link{margin-top:auto;font-size:14px;font-weight:600;color:var(--emerald-deep);
     display:inline-flex;align-items:center;gap:6px;padding:10px 0;min-height:44px}
   .plan-link:hover{color:var(--emerald)}
+  .founder-note{max-width:720px;margin:34px auto 0;background:var(--emerald-soft);
+    border:1px solid var(--line);border-radius:14px;padding:20px 24px;text-align:center}
+  .founder-note b{display:block;font-size:14px;color:var(--emerald-deep);margin-bottom:8px}
+  .founder-note p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;margin:0}
   @media (max-width:760px){
     section{padding:52px 0}
     .bento{grid-template-columns:1fr 1fr;gap:12px}
@@ -915,46 +884,71 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow dark">Planos</span>
-      <h2>Escolha o nível de acompanhamento</h2>
-      <p>Valores sob consulta, e isso não é enrolação: um perfil que já tem 80 avaliações e outro que nem foi verificado dão trabalhos muito diferentes. A gente olha o seu caso primeiro e só então fecha um número.</p>
+      <h2>Preço na mesa, sem reunião pra descobrir</h2>
+      <p>Sem contrato de fidelidade, sem taxa escondida e sem cobrança que aparece depois. Você começa pela estruturação e decide se quer o acompanhamento mensal em cima dela.</p>
     </div>
     <div class="price-grid">
+
       <div class="price-card">
-        <h3>Essencial</h3>
-        <div class="price-tag">sob consulta / mês</div>
+        <h3>Estruturação do perfil</h3>
+        <p class="price-for">Para quem quer o perfil montado do jeito certo e depois tocar sozinho.</p>
+        <div class="price-tag">
+          <span class="cur">R$</span><span class="val">250</span><span class="per">uma vez</span>
+        </div>
         <ul class="price-list">
-          <li><span class="check">✓</span>Monitoramento do perfil do Google</li>
-          <li><span class="check">✓</span>Resposta a avaliações</li>
-          <li><span class="check">✓</span>Relatório mensal simples</li>
+          <li><span class="check">✓</span>Raio-X de Visibilidade: onde você aparece hoje, ponto a ponto</li>
+          <li><span class="check">✓</span>Categoria conferida contra os 3 concorrentes do topo</li>
+          <li><span class="check">✓</span>Perfil preenchido campo a campo, sem nada que derrube ele depois</li>
+          <li><span class="check">✓</span>Seus serviços cadastrados com a palavra que o cliente digita</li>
+          <li><span class="check">✓</span>Todas as avaliações antigas que ficaram sem resposta, respondidas</li>
         </ul>
-        <a class="plan-link" href="https://wa.me/5551995960999?text=Quero%20saber%20mais%20sobre%20o%20plano%20Essencial" target="_blank" rel="noopener" aria-label="Falar sobre o plano Essencial pelo WhatsApp, abre em nova aba">Falar sobre esse plano →</a>
+        <a class="price-cta ghost" href="https://wa.me/5551995960999?text=Quero%20a%20estrutura%C3%A7%C3%A3o%20do%20perfil.%20Meu%20neg%C3%B3cio%20%C3%A9%3A" target="_blank" rel="noopener" aria-label="Falar sobre a estruturação do perfil pelo WhatsApp, abre em nova aba">Começar pela estruturação</a>
       </div>
+
       <div class="price-card featured">
-        <span class="featured-badge">Mais escolhido</span>
-        <h3>Crescimento</h3>
-        <div class="price-tag">sob consulta / mês</div>
+        <span class="featured-badge">Onde o resultado aparece</span>
+        <h3>Estruturação + Gerenciamento</h3>
+        <p class="price-for">Para quem quer subir de posição e continuar subindo mês a mês.</p>
+        <div class="price-tag">
+          <span class="cur">R$</span><span class="val">150</span><span class="per">por mês</span>
+          <span class="plus">mais R$ 250 de estruturação, uma vez só</span>
+        </div>
         <ul class="price-list">
-          <li><span class="check">✓</span>Tudo do Essencial</li>
-          <li><span class="check">✓</span>Geogrid mensal (mapa de posição)</li>
-          <li><span class="check">✓</span>Fotos e posts recorrentes</li>
-          <li><span class="check">✓</span>Rotina ativa de avaliações</li>
+          <li><span class="check">✓</span>Tudo da estruturação, já incluído</li>
+          <li><span class="check">✓</span>Resposta a toda avaliação nova, escrita para ajudar seu ranking</li>
+          <li><span class="check">✓</span>Seu mapa de posição medido todo mês, lado a lado com o anterior</li>
+          <li><span class="check">✓</span>Aviso na hora se mexerem nos seus dados ou duplicarem seu perfil</li>
+          <li><span class="check">✓</span>Horário de feriado ajustado antes da data, porque perfil fechado perde posição</li>
+          <li><span class="check">✓</span>A cada 3 meses, sua categoria rechecada contra os concorrentes</li>
         </ul>
-        <a class="btn btn-primary" href="https://wa.me/5551995960999?text=Quero%20saber%20mais%20sobre%20o%20plano%20Crescimento" target="_blank" rel="noopener" aria-label="Falar sobre o plano Crescimento pelo WhatsApp, abre em nova aba">Falar sobre esse plano</a>
+        <a class="price-cta solid" href="https://wa.me/5551995960999?text=Quero%20estruturar%20e%20gerenciar%20meu%20perfil.%20Meu%20neg%C3%B3cio%20%C3%A9%3A" target="_blank" rel="noopener" aria-label="Falar sobre estruturação e gerenciamento pelo WhatsApp, abre em nova aba">Estruturar e gerenciar</a>
+        <p class="price-foot">Sem fidelidade. Cancela quando quiser.</p>
       </div>
+
       <div class="price-card">
-        <h3>Domínio Local</h3>
-        <div class="price-tag">sob consulta / mês</div>
+        <h3>Site próprio</h3>
+        <p class="price-for">Complemento, quando o site atual é fraco ou você ainda não tem nenhum.</p>
+        <div class="price-tag">
+          <span class="cur">R$</span><span class="val">300</span><span class="per">uma vez</span>
+        </div>
         <ul class="price-list">
-          <li><span class="check">✓</span>Tudo do Crescimento</li>
-          <li><span class="check">✓</span>Citações em diretórios de nicho</li>
-          <li><span class="check">✓</span>Site ou landing page incluído</li>
-          <li><span class="check">✓</span>Prioridade de atendimento</li>
+          <li><span class="check">✓</span>Uma página só, rápida, pensada primeiro para o celular</li>
+          <li><span class="check">✓</span>Texto escrito para as buscas do seu serviço na sua cidade</li>
+          <li><span class="check">✓</span>Endereço, telefone e horário batendo exatamente com o seu Google</li>
+          <li><span class="check">✓</span>Botão de WhatsApp em todas as dobras e mapa de como chegar</li>
         </ul>
-        <a class="plan-link" href="https://wa.me/5551995960999?text=Quero%20saber%20mais%20sobre%20o%20plano%20Domínio%20Local" target="_blank" rel="noopener" aria-label="Falar sobre o plano Domínio Local pelo WhatsApp, abre em nova aba">Falar sobre esse plano →</a>
+        <a class="price-cta ghost" href="https://wa.me/5551995960999?text=Quero%20incluir%20o%20site.%20Meu%20neg%C3%B3cio%20%C3%A9%3A" target="_blank" rel="noopener" aria-label="Falar sobre o site pelo WhatsApp, abre em nova aba">Incluir o site</a>
       </div>
+
     </div>
+
+    <div class="founder-note">
+      <b>Por que está barato assim</b>
+      <p>Esse é o valor de cliente fundador. Estou começando a carteira e preciso de casos reais para mostrar, então cobro menos em troca de poder usar o seu resultado como exemplo, sempre com a sua autorização por escrito. Quando os primeiros casos estiverem prontos, o valor sobe. Quem entrar agora mantém o preço de entrada enquanto ficar.</p>
+    </div>
+
     <div class="price-trust">
-      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7A5F" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Sem fidelidade: você cancela quando quiser</span>
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7A5F" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Você aprova antes de qualquer mudança no seu perfil</span>
       <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7A5F" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>Valor fechado antes de começar, sem surpresa depois</span>
       <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E7A5F" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>O perfil continua no seu nome</span>
     </div>
@@ -1030,7 +1024,7 @@
     </details>
     <details>
       <summary>Quanto custa?</summary>
-      <p>Depende do ponto de partida, e é por isso que a gente conversa antes. Um perfil que já está verificado, com avaliações em dia, precisa de bem menos trabalho do que um que nunca foi reivindicado. Depois de olhar seu caso você recebe um valor fechado, sem surpresa depois.</p>
+      <p>Os valores estão na seção de planos, sem reunião para descobrir: R$ 250 uma vez para arrumar o perfil, R$ 150 por mês de acompanhamento, e R$ 300 se você também precisar de site. Caso raro que foge disso é perfil suspenso ou duplicado, que dá trabalho extra e eu falo antes de começar, nunca depois.</p>
     </details>
     <details>
       <summary>Quanto tempo até ver resultado?</summary>
